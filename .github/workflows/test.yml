@@ -6,6 +6,7 @@ on:
 
 env:
   S3_BUCKET: ${{ vars.S3_BUCKET }}
+  S3_BUCKET_NAME: ${{ secrets.S3_BUCKET }}
 
 jobs:
   build_and_deploy:
@@ -33,6 +34,7 @@ jobs:
           aws configure set default.region ${{ secrets.AWS_DEFAULT_REGION }}
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          echo $S3_BUCKET_NAME
 
       - name: List S3 Buckets
         run: aws s3 ls $S3_BUCKET
