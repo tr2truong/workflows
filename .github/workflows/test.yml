@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+env:
+  S3_BUCKET: ${{ vars.S3_BUCKET }}
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -32,4 +35,4 @@ jobs:
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: List S3 Buckets
-        run: aws s3 ls testwang
+        run: aws s3 ls $S3_BUCKET
