@@ -38,6 +38,7 @@ jobs:
           echo $BUCKET_NAME
           echo "BUCKET_NAME=${{ secrets.S3_BUCKET_NAME }}" >> .env
           echo $S3_BUCKET_NAME >> .env
+          ls
       - name: Environment file
         uses: actions/upload-artifact@v3
         with:
