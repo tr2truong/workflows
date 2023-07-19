@@ -36,6 +36,7 @@ jobs:
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           export BUCKET_NAME=${{ secrets.S3_BUCKET_NAME }}
           echo $BUCKET_NAME
+          echo "BUCKET_NAME=${{ secrets.S3_BUCKET_NAME }}" >> .env
           echo $S3_BUCKET_NAME >> .env
       - name: Environment file
         uses: actions/upload-artifact@v3
